@@ -57,7 +57,7 @@ public class Fibonacci {
 	}
 	
 	public static void main(String[] args) {
-		NumberWords convert = new NumberWords();
+	
 		Scanner sc = new Scanner(System.in);
 		Scanner num = new Scanner(System.in);
 		

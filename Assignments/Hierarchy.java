@@ -50,34 +50,38 @@ public class Hierarchy {
         // Loop through food items and print each with a bullet prefix
         for (int i = 0; i < elements.size(); i++) {
             food element = elements.get(i);
-            System.out.println("-" + element.getName());
+            char bulletSymbol='\u2023'; 
+            System.out.println(bulletSymbol + element.getName());
         }
     }
 
     // Prints the hierarchy in ASCII form
-    public static void ascii(category categ) {
+    public static void ascii(category categ) {  
         System.out.println(categ.getName()); // Print category name
         
         List<food> elements = categ.getElements(); // Get list of food items in the category
         // Loop through food items and print each with ASCII tree structure
         for (int i = 0; i < elements.size(); i++) {
             food element = elements.get(i);
-            System.out.println("└── " + element.getName());
+            System.out.println("      \t  └── " + element.getName());
         }
     }
 
     // Prints the hierarchy based on the specified format (ASCII or bullet)
     public static void printHierarchy(String format) {
         // Instantiate categories and add food items to them
-        category fruits = new category("Fruits");
-        category meat = new category("Meat");
-        category dairyProduct = new category("Dairy Product");
+        category fruits = new category("\t Fruits");
+        category meat = new category("\t Meat");
+        category dairyProduct = new category("\t Dairy Product");
         category beverage = new category("Beverage");
-        category consumable = new category("Consumable");
-        category condiments = new category("Condiments");
-        category vegetable = new category("Vegetable");
+        category condiments = new category("\t Condiments");
+        category vegetable = new category("\t Vegetable");
+        category fish = new category("\t Fish");
+        category poultry = new category("\t Poultry");
+        
         // Instantiating and adding food items to the 'fruits' category
         fruits.addElement(new food("Apple"));
+        
         fruits.addElement(new food("Banana"));
         fruits.addElement(new food("Tomato"));
         fruits.addElement(new food("Grapes"));
@@ -87,10 +91,7 @@ public class Hierarchy {
         meat.addElement(new food("Beef"));
         meat.addElement(new food("Chicken"));
         meat.addElement(new food("Pork"));
-        meat.addElement(new food("Poultry"));
-        meat.addElement(new food("Shrimp"));
-        meat.addElement(new food("Fish"));
-
+       
         // Instantiating and adding food items to the 'Dairy Product' category
         dairyProduct.addElement(new food("Butter"));
         dairyProduct.addElement(new food("Cheese"));
@@ -101,10 +102,7 @@ public class Hierarchy {
         beverage.addElement(new food("Orange Juice"));
         beverage.addElement(new food("Shake"));
 
-        // Instantiating and adding food items to the 'Consumable' category
-        consumable.addElement(new food("Cocoa"));
-        consumable.addElement(new food("Egg"));
-        consumable.addElement(new food("Rice"));
+       
 
         // Instantiating and adding food items to the 'Condiments' category
         condiments.addElement(new food("Soy Sauce"));
@@ -117,22 +115,37 @@ public class Hierarchy {
         vegetable.addElement(new food("Lettuce"));
         vegetable.addElement(new food("Carrots"));
         
+        fish.addElement(new food("Shrimp"));
+        
+        poultry.addElement(new food("Egg"));
+        poultry.addElement(new food("Chicken"));
         if ("ascii".equalsIgnoreCase(format)) {
+        	
+        	System.out.println("  └── " + "Food");
+        	
             ascii(fruits);
             ascii(meat);
             ascii(dairyProduct);
-            ascii(beverage);
-            ascii(consumable);
+         
+            
             ascii(condiments);
             ascii(vegetable);
+            ascii(fish);
+            ascii(poultry);
+            System.out.print(" └── ");
+            ascii(beverage);
         } else if ("bullet".equalsIgnoreCase(format)) {
+        	System.out.println("Food");
             bullet(fruits);
             bullet(meat);
             bullet(dairyProduct);
-            bullet(beverage);
-            bullet(consumable);
             bullet(condiments);
             bullet(vegetable);
+            bullet(fish);
+            bullet(poultry);
+            
+            
+            bullet(beverage);
         } else {
             System.out.println("Invalid format.");
         }     
@@ -149,10 +162,13 @@ public class Hierarchy {
         
         // Based on user choice, call printHierarchy with appropriate format
         if (choice == 1) {
+        	System.out.println("Consumables");
             printHierarchy("ascii");
         } else if (choice == 2) {
+        	System.out.println("Consumables");
             printHierarchy("bullet");
         } else {
+        	
             System.out.println("Invalid choice."); // Print message for invalid choice
         }
     }
