@@ -267,8 +267,8 @@ public class WordGuess {
 
 	private JButton createKeyboardButton(char letter, int x, int y) {
 	    JButton button = new JButton(String.valueOf(letter));
-	    button.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
-	    button.setBounds(x, y, 50, 35);
+	    button.setFont(new Font("Comic Sans MS", Font.BOLD, 16)); // Adjust font size if necessary
+	    button.setBounds(x, y, 60, 35); // Increase width to 60
 	    button.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
 	            validateGuess(letter);
